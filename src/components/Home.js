@@ -1,10 +1,39 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { FaProjectDiagram, FaBriefcase, FaLaptopCode, FaTools, FaHome, FaCode, FaGraduationCap, FaPuzzlePiece, FaUser, FaWhatsapp } from 'react-icons/fa';
-import { FiGithub, FiLinkedin } from "react-icons/fi";
+import { FaProjectDiagram, FaBriefcase, FaLaptopCode, FaTools, FaWhatsapp, FaArrowUp } from 'react-icons/fa';
+import { FiGithub, FiLinkedin, FiHome, FiCode, FiBriefcase } from "react-icons/fi";
 import { MdOutlineEmail, MdOutlineLocalPhone } from "react-icons/md";
+import { IoExtensionPuzzleOutline } from "react-icons/io5";
+import { LuGraduationCap, LuContact } from "react-icons/lu";
 
 const Home = () => {
+  const [showScrollButton, setShowScrollButton] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  
+  // Handle scroll to top
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
+  // Show scroll button when user scrolls down with debounce for better performance
+  useEffect(() => {
+    let scrollTimeout;
+    const handleScroll = () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        if (window.scrollY > 300) {
+          setShowScrollButton(true);
+        } else {
+          setShowScrollButton(false);
+        }
+      }, 100);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   const [displayText, setDisplayText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -21,12 +50,12 @@ const Home = () => {
   const timeoutRef = useRef(null);
 
   const navigationItems = [
-    { id: 'home', icon: FaHome, label: 'Home', href: '#home' },
-    { id: 'skills', icon: FaCode, label: 'Skills', href: '#skills' },
-    { id: 'academic', icon: FaGraduationCap, label: 'Academic', href: '#academic' },
-    { id: 'experience', icon: FaBriefcase, label: 'Experience', href: '#experience' },
-    { id: 'projects', icon: FaPuzzlePiece, label: 'Projects', href: '#projects' },
-    { id: 'contact', icon: FaUser, label: 'Contact', href: '#contact' }
+    { id: 'home', icon: FiHome, label: 'Home', href: '#home' },
+    { id: 'skills', icon: FiCode, label: 'Skills', href: '#skills' },
+    { id: 'experience', icon: FiBriefcase, label: 'Experience', href: '#experience' },
+    { id: 'projects', icon: IoExtensionPuzzleOutline, label: 'Projects', href: '#projects' },
+    { id: 'academic', icon: LuGraduationCap, label: 'Academic', href: '#academic' },
+    { id: 'contact', icon: LuContact, label: 'Contact', href: '#contact' }
   ];
 
   useEffect(() => {
@@ -114,20 +143,20 @@ const Home = () => {
   }, [activeSection]);
 
   return (
-    <section id="home" className="flex flex-col md:flex-row items-center justify-center bg-gradient-to-br from-indigo-50 to-white dark:from-gray-900 dark:to-gray-950 relative overflow-hidden">
+    <section id="home" className="flex flex-col md:flex-row items-center justify-center bg-gradient-to-br from-indigo-50 to-white dark:from-gray-900 dark:to-gray-950 relative overflow-hidden pb-32">
 
       <div className='container relative pb-40 flex flex-col md:flex-row items-center justify-center mt-10 mx-auto px-4 md:px-8 lg:px-12'>
         {/* Left Content */}
-        <div className="w-full md:w-1/2">
-          <div className="welcome-text mb-2 font-semibold text-sm text-indigo-600 dark:text-indigo-400 bg-indigo-100 dark:bg-indigo-900/30 py-1 px-4 rounded-full inline-block">
+        <div className="w-full md:w-1/2 animate-slide-up">
+          <div className="welcome-text mb-2 font-semibold text-sm text-indigo-600 dark:text-indigo-400 bg-indigo-100 dark:bg-indigo-900/30 py-3 px-4 rounded-full inline-block transition-all duration-300 hover:scale-80 hover:shadow-lg hover:shadow-indigo-200 dark:hover:shadow-indigo-900/50">
             Welcome to my portfolio
           </div>
 
-          <h1 className="text-5xl md:text-6xl font-bold mb-4">
-            Hi, I'm <span className="text-indigo-600 dark:text-indigo-400">Junaid Ashraf</span>
+          <h1 className="text-5xl md:text-6xl font-bold mb-4 dark:text-white">
+            Hi, I'm <span className="text-indigo-600 dark:text-white-400">Junaid Ashraf</span>
           </h1>
 
-          <h2 className="text-2xl md:text-3xl font-medium mb-6 h-12 md:h-14 flex items-center">
+          <h2 className="text-2xl md:text-3xl font-medium mb-6 h-12 md:h-14 flex items-center dark:text-white">
             I'm a <span className="text-indigo-600 font-bold dark:text-indigo-400 ml-2">{displayText}</span>
             <span className="ml-1 animate-pulse">|</span>
           </h2>
@@ -152,20 +181,20 @@ const Home = () => {
               Resume
             </a>
 
-            <div className="flex flex-wrap justify-center sm:justify-start gap-1.5 sm:gap-3 md:gap-4">
-              <a href="https://github.com" className="group w-10 h-10 bg-gray-100 dark:bg-gray-700 hover:bg-indigo-200 dark:hover:bg-indigo-700 flex items-center justify-center rounded-full transition-all duration-300 ease-in-out">
+            <div className="flex flex-wrap justify-center sm:justify-start gap-1.5 sm:gap-3 md:gap-4 animate-slide-right">
+              <a href="https://wa.me/923151728837" target="_blank" rel="noopener noreferrer" className="group w-10 h-10 bg-gray-100 dark:bg-gray-700 hover:bg-indigo-200 dark:hover:bg-indigo-700 flex items-center justify-center rounded-full transition-all duration-300 ease-in-out">
                 <FaWhatsapp className="w-6 h-6 text-gray-700 dark:text-gray-300 group-hover:text-[#6d28d9] transition-all duration-300 ease-in-out group-hover:rotate-6 group-hover:scale-110" />
               </a>
-              <a href="https://github.com" className="group w-10 h-10 bg-gray-100 dark:bg-gray-700 hover:bg-indigo-200 dark:hover:bg-indigo-700 flex items-center justify-center rounded-full transition-all duration-300 ease-in-out">
+              <a href="https://github.com/junaid-ash4275" target="_blank" rel="noopener noreferrer" className="group w-10 h-10 bg-gray-100 dark:bg-gray-700 hover:bg-indigo-200 dark:hover:bg-indigo-700 flex items-center justify-center rounded-full transition-all duration-300 ease-in-out">
                 <FiGithub className="w-6 h-6 text-gray-700 dark:text-gray-300 group-hover:text-[#6d28d9] transition-all duration-300 ease-in-out group-hover:rotate-6 group-hover:scale-110" />
               </a>
-              <a href="https://linkedin.com" className="group w-10 h-10 bg-gray-100 dark:bg-gray-700 hover:bg-indigo-200 dark:hover:bg-indigo-700 flex items-center justify-center rounded-full transition-all duration-300 ease-in-out">
+              <a href="https://linkedin.com/in/junaid-ashraf-b927b21a1" target="_blank" rel="noopener noreferrer" className="group w-10 h-10 bg-gray-100 dark:bg-gray-700 hover:bg-indigo-200 dark:hover:bg-indigo-700 flex items-center justify-center rounded-full transition-all duration-300 ease-in-out">
                 <FiLinkedin className="w-6 h-6 text-gray-700 dark:text-gray-300 group-hover:text-[#6d28d9] transition-all duration-300 ease-in-out group-hover:rotate-6 group-hover:scale-110" />
               </a>
-              <a href="mailto:contact@example.com" className="group w-10 h-10 bg-gray-100 dark:bg-gray-700 hover:bg-indigo-200 dark:hover:bg-indigo-700 flex items-center justify-center rounded-full transition-all duration-300 ease-in-out">
+              <a href="mailto:junaid.ashraf4275@gmail.com" className="group w-10 h-10 bg-gray-100 dark:bg-gray-700 hover:bg-indigo-200 dark:hover:bg-indigo-700 flex items-center justify-center rounded-full transition-all duration-300 ease-in-out">
                 <MdOutlineEmail className="w-6 h-6 text-gray-700 dark:text-gray-300 group-hover:text-[#6d28d9] transition-all duration-300 ease-in-out group-hover:rotate-6 group-hover:scale-110" />
               </a>
-              <a href="tel:+1234567890" className="group w-10 h-10 bg-gray-100 dark:bg-gray-700 hover:bg-indigo-200 dark:hover:bg-indigo-700 flex items-center justify-center rounded-full transition-all duration-300 ease-in-out">
+              <a href="tel:+923151728837" className="group w-10 h-10 bg-gray-100 dark:bg-gray-700 hover:bg-indigo-200 dark:hover:bg-indigo-700 flex items-center justify-center rounded-full transition-all duration-300 ease-in-out">
                 <MdOutlineLocalPhone className="w-6 h-6 text-gray-700 dark:text-gray-300 group-hover:text-[#6d28d9] transition-all duration-300 ease-in-out group-hover:rotate-6 group-hover:scale-110" />
               </a>
             </div>
@@ -195,22 +224,22 @@ const Home = () => {
             <pre className="code-editor-content">
               <div className="code-editor-background"></div>
               <code className="block">
-                <span className="text-blue-600 dark:text-blue-400">const</span> <span className="text-green-600 dark:text-green-400">Programmer</span> = {`{`}
-                <br />  <span className="text-purple-600 dark:text-purple-400">name</span>: <span className="text-orange-600 dark:text-orange-400">"Junaid Ashraf"</span>,
-                <br />  <span className="text-purple-600 dark:text-purple-400">title</span>: <span className="text-orange-600 dark:text-orange-400">"Frontend Developer | Junior MERN Stack Dev"</span>,
-                <br />  <span className="text-purple-600 dark:text-purple-400">skills</span>: {`[`}
-                <br />    <span className="text-orange-600 dark:text-orange-400">"React"</span>,<span className="text-orange-600 dark:text-orange-400">"Next.js"</span>,<span className="text-orange-600 dark:text-orange-400">"TypeScript"</span>,<span className="text-orange-600 dark:text-orange-400">"JavaScript"</span>,<span className="text-orange-600 dark:text-orange-400">"Tailwind CSS"</span>,
-                <br />    <span className="text-orange-600 dark:text-orange-400">"Node.js"</span>,<span className="text-orange-600 dark:text-orange-400">"Express"</span>,<span className="text-orange-600 dark:text-orange-400">"MongoDB"</span>,<span className="text-orange-600 dark:text-orange-400">"REST APIs"</span>
-                <br />  {`]`},
-                <br />  <span className="text-purple-600 dark:text-purple-400">openToWork</span>: <span className="text-blue-600 dark:text-blue-400">true</span>,
-                <br />  <span className="text-purple-600 dark:text-purple-400">hireable</span>: <span className="text-green-600 dark:text-green-400">function</span>() {`{`}
-                <br />    <span className="text-blue-600 dark:text-blue-400">return</span> (
-                <br />      <span className="text-purple-600 dark:text-purple-400">this</span>.skills.includes(<span className="text-orange-600 dark:text-orange-400">"React"</span>) &&
-                <br />      <span className="text-purple-600 dark:text-purple-400">this</span>.skills.includes(<span className="text-orange-600 dark:text-orange-400">"TypeScript"</span>) &&
-                <br />      <span className="text-purple-600 dark:text-purple-400">this</span>.skills.length {'>='} 5
-                <br />    );
-                <br />  {`}`}
-                <br />{`}`};
+                <span className="text-blue-600 dark:text-blue-400">const</span> <span className="text-green-600 dark:text-green-400">Programmer</span> <span className="text-blue-600 dark:text-blue-400">=</span> <span className="text-green-600 dark:text-green-400">{`{`}</span>
+                <br />  <span className="text-purple-600 dark:text-purple-400">name</span><span className="text-blue-600 dark:text-blue-400">:</span> <span className="text-orange-600 dark:text-orange-400">"Junaid Ashraf"</span><span className="text-blue-600 dark:text-blue-400">,</span>
+                <br />  <span className="text-purple-600 dark:text-purple-400">title</span><span className="text-blue-600 dark:text-blue-400">:</span> <span className="text-orange-600 dark:text-orange-400">"Frontend Developer | Junior MERN Stack Dev"</span><span className="text-blue-600 dark:text-blue-400">,</span>
+                <br />  <span className="text-purple-600 dark:text-purple-400">skills</span><span className="text-blue-600 dark:text-blue-400">:</span> <span className="text-green-600 dark:text-green-400">{`[`}</span>
+                <br />    <span className="text-orange-600 dark:text-orange-400">"React"</span><span className="text-blue-600 dark:text-blue-400">,</span> <span className="text-orange-600 dark:text-orange-400">"Next.js"</span><span className="text-blue-600 dark:text-blue-400">,</span> <span className="text-orange-600 dark:text-orange-400">"TypeScript"</span><span className="text-blue-600 dark:text-blue-400">,</span> <span className="text-orange-600 dark:text-orange-400">"JavaScript"</span><span className="text-blue-600 dark:text-blue-400">,</span> <span className="text-orange-600 dark:text-orange-400">"Tailwind CSS"</span><span className="text-blue-600 dark:text-blue-400">,</span>
+                <br />    <span className="text-orange-600 dark:text-orange-400">"Node.js"</span><span className="text-blue-600 dark:text-blue-400">,</span> <span className="text-orange-600 dark:text-orange-400">"Express"</span><span className="text-blue-600 dark:text-blue-400">,</span> <span className="text-orange-600 dark:text-orange-400">"MongoDB"</span><span className="text-blue-600 dark:text-blue-400">,</span> <span className="text-orange-600 dark:text-orange-400">"REST APIs"</span>
+                <br />  <span className="text-green-600 dark:text-green-400">{`]`}</span><span className="text-blue-600 dark:text-blue-400">,</span>
+                <br />  <span className="text-purple-600 dark:text-purple-400">openToWork</span><span className="text-blue-600 dark:text-blue-400">:</span> <span className="text-blue-600 dark:text-blue-400">true</span><span className="text-blue-600 dark:text-blue-400">,</span>
+                <br />  <span className="text-purple-600 dark:text-purple-400">hireable</span><span className="text-blue-600 dark:text-blue-400">:</span> <span className="text-green-600 dark:text-green-400">function</span><span className="text-green-600 dark:text-green-400">()</span> <span className="text-green-600 dark:text-green-400">{`{`}</span>
+                <br />    <span className="text-blue-600 dark:text-blue-400">return</span> <span className="text-green-600 dark:text-green-400">(</span>
+                <br />      <span className="text-purple-600 dark:text-purple-400">this</span><span className="text-orange-600 dark:text-orange-400">.skills.includes</span><span className="text-green-600 dark:text-green-400">(</span><span className="text-orange-600 dark:text-orange-400">"React"</span><span className="text-green-600 dark:text-green-400">)</span> <span className="text-orange-600 dark:text-orange-400">&&</span>
+                <br />      <span className="text-purple-600 dark:text-purple-400">this</span><span className="text-orange-600 dark:text-orange-400">.skills.includes</span><span className="text-green-600 dark:text-green-400">(</span><span className="text-orange-600 dark:text-orange-400">"TypeScript"</span><span className="text-green-600 dark:text-green-400">)</span> <span className="text-orange-600 dark:text-orange-400">&&</span>
+                <br />      <span className="text-purple-600 dark:text-purple-400">this</span><span className="text-orange-600 dark:text-orange-400">.skills.length <span className="text-blue-600 dark:text-blue-400">{'>='}</span> 5</span>
+                <br />    <span className="text-green-600 dark:text-green-400">)</span><span className="text-blue-600 dark:text-blue-400">;</span>
+                <br />  <span className="text-green-600 dark:text-green-400">{`}`}</span>
+                <br /><span className="text-green-600 dark:text-green-400">{`}`}</span><span className="text-blue-600 dark:text-blue-400">;</span>
               </code>
             </pre>
           </div>
@@ -240,7 +269,7 @@ const Home = () => {
                     <FaBriefcase className="text-white" size={20} />
                   </div>
                   <div className="tile-text">
-                    <span className="tile-number">2</span>
+                    <span className="tile-number">3+</span>
                     <span className="tile-label text-gray-600 dark:text-gray-300">Years of Experience</span>
                   </div>
                 </div>
@@ -266,7 +295,7 @@ const Home = () => {
                     <FaTools className="text-white" size={20} />
                   </div>
                   <div className="tile-text">
-                    <span className="tile-number">7+</span>
+                    <span className="tile-number">10+</span>
                     <span className="tile-label text-gray-600 dark:text-gray-300">Tools Used</span>
                   </div>
                 </div>
@@ -276,11 +305,11 @@ const Home = () => {
         </div>
       </div>
       {/* Integrated Sidebar Navigation */}
-      <div className="fixed right-4 top-1/2 transform -translate-y-1/2 z-50">
-        <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full shadow-lg border border-gray-100 dark:border-gray-700 py-4 px-2 flex flex-col items-center">
+      <div className="fixed right-8 top-1/2 transform -translate-y-1/2 z-50">
+        <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full shadow-lg border border-gray-100 dark:border-gray-700 py-6 px-3 flex flex-col items-center">
           <div className="relative flex flex-col items-center">
-            {/* Top spacer */}
-            <div className="h-4 w-1 bg-transparent"></div>
+            {/* Removed top spacer since we don't want any line above the first icon */}
+            <div className="h-0 w-1 bg-transparent"></div>
 
             {navigationItems.map((item, index) => {
               const IconComponent = item.icon;
@@ -295,7 +324,7 @@ const Home = () => {
                       handleNavClick(item.id);
                     }}
                     className={`
-                      relative my-1.5 p-2 rounded-full transition-all duration-300 group
+                      relative p-2.5 rounded-full transition-all duration-300 group
                       ${isActive
                         ? 'bg-indigo-500 text-white shadow-lg scale-110'
                         : 'text-gray-600 dark:text-gray-300 hover:text-indigo-500 hover:bg-indigo-50 dark:hover:bg-indigo-900/30'
@@ -314,16 +343,16 @@ const Home = () => {
                     </div>
                   </a>
 
-                  {/* Connecting line between items */}
+                  {/* Connecting line between items - positioned below each icon */}
                   {index < navigationItems.length - 1 && (
-                    <div className="h-6 w-0.5 bg-gray-200 dark:bg-gray-600 my-0.5"></div>
+                    <div className="h-6 w-0.5 bg-gray-300 dark:bg-gray-500"></div>
                   )}
                 </React.Fragment>
               );
             })}
 
-            {/* Bottom spacer */}
-            <div className="h-4 w-1 bg-transparent"></div>
+            {/* Removed bottom spacer since we don't want any line below the last icon */}
+            <div className="h-0 w-1 bg-transparent"></div>
 
             {/* Active indicator line */}
             <div
@@ -340,8 +369,23 @@ const Home = () => {
         </div>
       </div>
 
-
-
+      {/* Scroll to Top Button with smooth transitions */}
+      <div className={`fixed bottom-4 right-4 z-50 transition-all duration-500 ease-in-out transform ${
+        showScrollButton ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
+      }`}>
+        <button
+          onClick={scrollToTop}
+          className="flex items-center px-2 py-2 text-sm border border-indigo-600
+            shadow-[4px_4px_0px_0px_rgba(67,56,202,0.9)]
+            dark:shadow-[4px_4px_0px_0px_rgba(55,65,81,0.9)]
+            transition-all duration-300 ease-in-out select-none
+            dark:bg-gray-800 dark:text-white p-3 bg-white text-black rounded-full
+            hover:scale-110"
+          aria-label="Scroll to top"
+        >
+          <FaArrowUp className="w-5 h-5" />
+        </button>
+      </div>
     </section>
   );
 };

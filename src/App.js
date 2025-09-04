@@ -47,12 +47,11 @@ function App() {
       <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
       <div className="bg-white dark:bg-gray-900">
         <Home />
+        <Skills />
         <Experience />
         <Projects />
-        <Contact />
-        <Skills />
         <Academic />
-        <TechnicalExpertise />
+        <Contact />
         <Footer />
       </div>
     </div>

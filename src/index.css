@@ -54,6 +54,39 @@
   animation: slideIn .5s ease-out forwards;
 }
 
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 1.2s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-slide-right {
+  animation: slideRight 1.2s ease-out forwards;
+  opacity: 0;
+  animation-delay: 1.2s; /* Increased from 0.8s to 1.4s to start after content animation */
+}
+
 @keyframes peek {
   25% {
     transform: rotateX(30deg) rotate(-13deg);
@@ -341,4 +374,87 @@
 
 .group:hover .code-editor-background {
   opacity: 0.2;
+}
+
+/* Timeline Experience Styles */
+.timeline-container {
+  @apply relative max-w-4xl mx-auto;
+}
+
+.timeline-line {
+  @apply absolute left-1/2 transform -translate-x-1/2 w-0.5 bg-gradient-to-b from-indigo-500 to-purple-600 h-full;
+}
+
+.timeline-item {
+  @apply relative flex items-center mb-8;
+}
+
+.timeline-item:nth-child(odd) {
+  @apply flex-row-reverse;
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+  @apply text-right;
+}
+
+.timeline-content {
+  @apply w-5/12 p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-indigo-200 dark:border-gray-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+}
+
+.timeline-date {
+  @apply absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-indigo-600 text-white px-3 py-1 rounded-full text-sm font-medium whitespace-nowrap z-10;
+}
+
+.timeline-dot {
+  @apply absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-indigo-600 rounded-full border-4 border-white dark:border-gray-900 z-20;
+}
+
+.experience-title {
+  @apply text-xl font-bold text-gray-900 dark:text-white mb-2;
+}
+
+.experience-company {
+  @apply text-indigo-600 dark:text-indigo-400 font-medium mb-1;
+}
+
+.experience-location {
+  @apply text-gray-500 dark:text-gray-400 text-sm mb-3;
+}
+
+.experience-description {
+  @apply text-gray-700 dark:text-gray-300 text-sm leading-relaxed;
+}
+
+.remote-badge {
+  @apply inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 ml-2;
+}
+
+@media (max-width: 768px) {
+  .timeline-line {
+    @apply left-8;
+  }
+  
+  .timeline-item {
+    @apply flex-row;
+  }
+  
+  .timeline-item:nth-child(odd) {
+    @apply flex-row;
+  }
+  
+  .timeline-item:nth-child(odd) .timeline-content {
+    @apply text-left;
+  }
+  
+  .timeline-content {
+    @apply w-full ml-16;
+  }
+  
+  .timeline-date {
+    @apply left-8;
+  }
+  
+  .timeline-dot {
+    @apply left-8;
+  }
 }
