@@ -16,6 +16,7 @@ function App() {
   const [darkMode, setDarkMode] = useState(false); // Default to dark mode
   const [loading, setLoading] = useState(true);
 
+  //this useEffects handles scoll progress bar
   useEffect(() => {
     const handleScroll = () => {
     };
