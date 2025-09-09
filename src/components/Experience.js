@@ -5,27 +5,27 @@ const Experience = () => {
     {
       id: 1,
       title: "React Developer",
-      company: "Dot Logics",
-      location: "Rawalpindi, Pakistan",
-      dateRange: "Aug 2024 - Present",
-      isRemote: true,
+      company: "XPRT Computing",
+      location: "Lahore, Pakistan",
+      dateRange: "Aug 2023 - Present",
+      isRemote: false,
       description: "Building innovative solutions and delivering value across diverse roles and industries"
     },
     {
       id: 2,
-      title: "React Developer",
-      company: "New Alpha General Transport (NAGT)",
-      location: "Abu Dhabi, U.A.E",
-      dateRange: "Jan 2024 - July 2024",
-      isRemote: true,
+      title: ".NET Developer",
+      company: "XPRT Computing",
+      location: "Lahore, Pakistan",
+      dateRange: "Feb 2024 - Present",
+      isRemote: false,
       description: "Developed modern web applications with focus on performance and user experience"
     },
     {
       id: 3,
-      title: "Frontend Developer",
+      title: "MERN Stack Developer",
       company: "Freelance Projects",
       location: "Remote",
-      dateRange: "Jan 2024 - Jan 2024",
+      dateRange: "Jan 2022 - Present",
       isRemote: true,
       description: "Created responsive web applications and collaborated with cross-functional teams"
     }
@@ -77,13 +77,13 @@ const Experience = () => {
                 <div key={experience.id} className="relative">
                   {/* Connecting lines - positioned relative to timeline center */}
                   {isLeft ? (
-                    <div className="hidden sm:block h-[2px] w-8 md:w-16 absolute left-1/2 top-8 -translate-y-1/2 bg-gradient-to-l from-indigo-600 to-transparent dark:from-indigo-600 dark:to-gray-900"></div>
+                    <div className="hidden sm:block h-[2px] w-[10%] absolute left-[40%] top-1/2 -translate-y-1/2 bg-gradient-to-l from-indigo-600 to-transparent dark:from-indigo-600 dark:to-gray-900"></div>
                   ) : (
-                    <div className="hidden sm:block h-[2px] w-8 md:w-16 absolute right-1/2 top-8 -translate-y-1/2 bg-gradient-to-r from-indigo-600 to-transparent dark:from-indigo-600 dark:to-gray-900"></div>
+                    <div className="hidden sm:block h-[2px] w-[10%] absolute left-1/2 top-1/2 -translate-y-1/2 bg-gradient-to-r from-indigo-600 to-transparent dark:from-indigo-600 dark:to-gray-900"></div>
                   )}
-                  
+
                   {/* Timeline item container */}
-                  <div className={`relative flex ${isLeft ? 'sm:justify-start' : 'sm:justify-end'} items-center`}>
+                  <div className={`relative flex ${isLeft ? 'sm:justify-start' : 'sm:justify-end'} items-center min-h-56`}>
                     {/* Content Card */}
                     <div className={`w-full sm:w-[45%] max-w-2xl relative bg-white dark:bg-gray-800 dark:border-gray-700 border-2 border-indigo-600
                       shadow-[4px_4px_0px_0px_rgba(67,56,202,0.9)]
@@ -91,6 +91,8 @@ const Experience = () => {
                       dark:shadow-[4px_4px_0px_0px_rgba(55,65,81,0.9)]
                       dark:hover:shadow-[6px_6px_0px_0px_rgba(55,65,81,1)]
                       transition-all duration-300 select-none rounded-xl dark:bg-gray-800/90 p-6 sm:p-6 transform-gpu cursor-pointer ${isLeft ? 'sm:mr-auto' : 'sm:ml-auto'}`}>
+                      {/* Gradient overlay */}
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_0%,rgba(99,102,241,0.1)_0%,transparent_30%),radial-gradient(circle_at_0%_100%,rgba(99,102,241,0.1)_0%,transparent_30%)] rounded-xl pointer-events-none"></div>
                       {/* Date Badge */}
                       <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-100 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 shadow-sm mb-4">
                         {experience.dateRange}
@@ -98,9 +100,13 @@ const Experience = () => {
 
                       <div className="experience-title text-xl font-bold text-gray-900 dark:text-white mb-2">
                         {experience.title}
-                        {experience.isRemote && (
+                        {experience.isRemote ? (
                           <span className="ml-2 text-sm font-normal bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-300 px-2 py-0.5 rounded-full">
                             🌐 Remote
+                          </span>
+                        ) : (
+                          <span className="ml-2 text-sm font-normal bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-300 px-2 py-0.5 rounded-full">
+                            On-site
                           </span>
                         )}
                       </div>
@@ -119,7 +125,7 @@ const Experience = () => {
                     </div>
 
                     {/* Enhanced Timeline Dot with multi-layered pulse effect */}
-                    <div className="absolute left-1/2 top-8 -translate-x-1/2 z-10 w-3 h-3 hidden sm:flex items-center justify-center">
+                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-3 h-3 hidden sm:flex items-center justify-center">
                       <div className="relative w-full h-full">
                         {/* Outer pulse ring */}
                         <div
