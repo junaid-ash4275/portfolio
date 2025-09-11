@@ -21,9 +21,18 @@ module.exports = {
             transform: 'translateY(0)'
           },
         },
+        'spin-slow': {
+          '0%': {
+            transform: 'rotate(0deg)'
+          },
+          '100%': {
+            transform: 'rotate(360deg)'
+          },
+        },
       },
       animation: {
         'fade-in-down': 'fade-in-down 0.3s ease-out',
+        'spin-slow': 'spin-slow 8s linear infinite',
       },
     },
   },

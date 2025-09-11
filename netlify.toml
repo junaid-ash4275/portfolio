@@ -1,10 +1,14 @@
 [build]
   command = "npm run build"
   publish = "build"
+  functions = "netlify/functions"
 
 [build.environment]
   NODE_VERSION = "18"
   NPM_VERSION = "9"
+
+[functions]
+  node_bundler = "npm"
 
 [[redirects]]
   from = "/*"

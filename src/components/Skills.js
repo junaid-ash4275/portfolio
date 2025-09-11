@@ -100,7 +100,7 @@ const Skills = () => {
               className={`group relative flex items-center gap-2 px-1.5 py-1 rounded-lg
                 border border-indigo-600/30 dark:border-indigo-600/30
                 bg-white dark:bg-slate-900/90
-                hover:bg-indigo-50 dark:hover:bg-indigo-900/50
+                hover:bg-indigo-50 dark:hover:bg-indigo-900/50 dark:text-white
                 hover:border-indigo-500 dark:hover:border-indigo-400
                 hover:scale-125 hover:shadow-lg hover:z-10
                 hover:-translate-y-1 hover:rotate-2
