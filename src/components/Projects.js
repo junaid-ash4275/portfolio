@@ -11,25 +11,23 @@ const Projects = () => {
       id: 1,
       title: "Prescripto",
       description: "Easy appointment scheduling and management for doctors, patients and admin with multiple dashboards",
-      image: "/assets/project1.png",
+      image: "/assets/prescripto.png",
       technologies: ["React", "Node.js", "MongoDB", "Express", "Tailwind CSS", "Prebuild UI", "SchadCN"],
       category: "FullStack",
-      link: "#",
-      github: "#"
+      github: "https://github.com/junaid-ash4275/prescripto"
     },
     {
       id: 2,
       title: "Job Portal",
       description: "Job portal for job seekers and employers with advanced search and filtering options",
-      image: "/assets/project2.png",
+      image: "/assets/job-portal.png",
       technologies: ["React", "Node.js", "MongoDB", "Express", "Tailwind CSS,", "Aceternity UI"],
       category: "FullStack",
-      link: "#",
-      github: "#"
+      github: "https://github.com/junaid-ash4275/job-portal"
     },
     {
       id: 3,
-      title: "SB Bookins Doctors App",
+      title: "SB Bookings - Doctors App",
       description: "Appointment Manager: A complete app for doctors to manage daily appointments, add or remove staff, and manage patients. Includes integrated payment gateway with Stripe. Implements Role-Based Access Control (RBAC) for seamless user management.",
       image: "/assets/project3.png",
       technologies: ["React", "Node.js", "PostgreSQL", "Express", "Tailwind CSS", "Stripe", "Argon Dashboard UI", "Material UI"],
@@ -116,20 +114,20 @@ const Projects = () => {
           {/* Left Navigation Arrow */}
           <button
             onClick={prevProject}
-            className="absolute left-0 -ml-12 top-1/2 -translate-y-1/2 z-10 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110"
+            className="absolute left-0 -ml-12 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-indigo-600 dark:bg-indigo-600 border border-indigo-600 shadow-[2px_2px_0px_0px_rgba(67,56,202,0.9)] hover:shadow-[3px_3px_0px_0px_rgba(67,56,202,1)] focus:outline-none group transition-all duration-300 hover:bg-indigo-700 dark:hover:bg-indigo-700"
             aria-label="Previous project"
           >
-            <svg className="w-6 h-6 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
           {/* Right Navigation Arrow */}
           <button
             onClick={nextProject}
-            className="absolute right-0 -mr-12 top-1/2 -translate-y-1/2 z-10 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110"
+            className="absolute right-0 -mr-12 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-indigo-600 dark:bg-indigo-600 border border-indigo-600 shadow-[2px_2px_0px_0px_rgba(67,56,202,0.9)] hover:shadow-[3px_3px_0px_0px_rgba(67,56,202,1)] focus:outline-none group transition-all duration-300 hover:bg-indigo-700 dark:hover:bg-indigo-700"
             aria-label="Next project"
           >
-            <svg className="w-6 h-6 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>
@@ -143,7 +141,7 @@ const Projects = () => {
               {projects.map((project) => (
                 <div
                   key={project.id}
-                  className="flex-[0_0_100%] lg:flex-[0_0_50%] mb-8 p-2"
+                  className="flex-[0_0_100%] lg:flex-[0_0_50%] mb-8 p-2 lg:pr-4"
                 >
                   <div className="relative group p-8 bg-white dark:bg-gray-800 rounded-xl 
                         border-2 border-indigo-600 dark:border-gray-700 
@@ -161,11 +159,24 @@ const Projects = () => {
 
                     {/* Project Image */}
                     <div className="relative h-96 w-full mb-6 overflow-hidden rounded-lg">
-                      <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                      <img 
+                        src={project.image} 
+                        alt={project.title}
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        onError={(e) => {
+                          e.target.style.display = 'none';
+                          e.target.nextSibling.style.display = 'flex';
+                        }}
+                      />
+                      <div 
+                        className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center"
+                        style={{ display: 'none' }}
+                      >
                         <div className="text-white text-center p-4">
                           <div className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-2">
                             <span className="text-2xl">🚀</span>
                           </div>
+                          <p className="text-sm opacity-80">Image not available</p>
                         </div>
                       </div>
                     </div>

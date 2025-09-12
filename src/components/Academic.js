@@ -139,9 +139,9 @@ const Academic = () => {
                           2024
                         </span>
                       </div>
-                      <button className="text-blue-600 dark:text-blue-400 text-sm hover:underline">
+                      {/* <button className="text-blue-600 dark:text-blue-400 text-sm hover:underline">
                         View Credentials
-                      </button>
+                      </button> */}
                     </div>
                   </div>
                 </div>
@@ -170,9 +170,9 @@ const Academic = () => {
                           2023
                         </span>
                       </div>
-                      <button className="text-blue-600 dark:text-blue-400 text-sm hover:underline">
+                      {/* <button className="text-blue-600 dark:text-blue-400 text-sm hover:underline">
                         View Credentials
-                      </button>
+                      </button> */}
                     </div>
                   </div>
                 </div>
@@ -199,9 +199,9 @@ const Academic = () => {
                           2023
                         </span>
                       </div>
-                      <button className="text-blue-600 dark:text-blue-400 text-sm hover:underline ml-12">
+                      {/* <button className="text-blue-600 dark:text-blue-400 text-sm hover:underline ml-12">
                         View Credentials
-                      </button>
+                      </button> */}
                     </div>
                   </div>
                 </div>

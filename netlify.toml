@@ -8,7 +8,7 @@
   NPM_VERSION = "9"
 
 [functions]
-  node_bundler = "npm"
+  node_bundler = "esbuild"
 
 [[redirects]]
   from = "/*"

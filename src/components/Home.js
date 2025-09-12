@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { FaProjectDiagram, FaBriefcase, FaLaptopCode, FaTools, FaWhatsapp, FaArrowUp } from 'react-icons/fa';
 import { FiGithub, FiLinkedin, FiHome, FiCode, FiBriefcase } from "react-icons/fi";
 import { MdOutlineEmail, MdOutlineLocalPhone } from "react-icons/md";
@@ -18,6 +18,7 @@ const Home = () => {
   };
 
   // Show scroll button when user scrolls down with debounce for better performance
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     let scrollTimeout;
     const handleScroll = () => {
@@ -49,15 +50,16 @@ const Home = () => {
   const currentText = jobTitles[currentIndex];
   const timeoutRef = useRef(null);
 
-  const navigationItems = [
+  const navigationItems = useMemo(() => ([
     { id: 'home', icon: FiHome, label: 'Home', href: '#home' },
     { id: 'skills', icon: FiCode, label: 'Skills', href: '#skills' },
     { id: 'experience', icon: FiBriefcase, label: 'Experience', href: '#experience' },
     { id: 'projects', icon: IoExtensionPuzzleOutline, label: 'Projects', href: '#projects' },
     { id: 'academic', icon: LuGraduationCap, label: 'Academic', href: '#academic' },
     { id: 'contact', icon: LuContact, label: 'Contact', href: '#contact' }
-  ];
+  ]), []);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (isDeleting) {
       if (displayText.length > 0) {
@@ -87,7 +89,7 @@ const Home = () => {
         clearTimeout(timeoutRef.current);
       }
     };
-  }, [displayText, currentText, isDeleting, typingSpeed]);
+  }, [displayText, currentText, isDeleting, typingSpeed, jobTitles.length]);
 
   const handleNavClick = (id) => {
     setActiveSection(id);
@@ -98,6 +100,7 @@ const Home = () => {
   };
 
   // Add scroll event listener to update active section
+  // eslint-disable-next-line
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 100; // Add some offset
@@ -140,7 +143,7 @@ const Home = () => {
 
     // Cleanup
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [activeSection]);
+  }, [activeSection, navigationItems]);
 
   return (
     <section id="home" className="flex flex-col md:flex-row items-center justify-center bg-gradient-to-br from-indigo-50 to-white dark:from-gray-900 dark:to-gray-950 relative overflow-hidden pb-32">
@@ -227,17 +230,18 @@ const Home = () => {
               <code className="block">
                 <span className="text-blue-600 dark:text-blue-400">const</span> <span className="text-green-600 dark:text-green-400">Programmer</span> <span className="text-blue-600 dark:text-blue-400">=</span> <span className="text-green-600 dark:text-green-400">{`{`}</span>
                 <br />  <span className="text-purple-600 dark:text-purple-400">name</span><span className="text-blue-600 dark:text-blue-400">:</span> <span className="text-orange-600 dark:text-orange-400">"Junaid Ashraf"</span><span className="text-blue-600 dark:text-blue-400">,</span>
-                <br />  <span className="text-purple-600 dark:text-purple-400">title</span><span className="text-blue-600 dark:text-blue-400">:</span> <span className="text-orange-600 dark:text-orange-400">"Frontend Developer | Junior MERN Stack Dev"</span><span className="text-blue-600 dark:text-blue-400">,</span>
+                <br />  <span className="text-purple-600 dark:text-purple-400">title</span><span className="text-blue-600 dark:text-blue-400">:</span> <span className="text-orange-600 dark:text-orange-400">"Full Stack Developer | MERN Stack Dev"</span><span className="text-blue-600 dark:text-blue-400">,</span>
                 <br />  <span className="text-purple-600 dark:text-purple-400">skills</span><span className="text-blue-600 dark:text-blue-400">:</span> <span className="text-green-600 dark:text-green-400">{`[`}</span>
                 <br />    <span className="text-orange-600 dark:text-orange-400">"React"</span><span className="text-blue-600 dark:text-blue-400">,</span> <span className="text-orange-600 dark:text-orange-400">"Next.js"</span><span className="text-blue-600 dark:text-blue-400">,</span> <span className="text-orange-600 dark:text-orange-400">"TypeScript"</span><span className="text-blue-600 dark:text-blue-400">,</span> <span className="text-orange-600 dark:text-orange-400">"JavaScript"</span><span className="text-blue-600 dark:text-blue-400">,</span> <span className="text-orange-600 dark:text-orange-400">"Tailwind CSS"</span><span className="text-blue-600 dark:text-blue-400">,</span>
-                <br />    <span className="text-orange-600 dark:text-orange-400">"Node.js"</span><span className="text-blue-600 dark:text-blue-400">,</span> <span className="text-orange-600 dark:text-orange-400">"Express"</span><span className="text-blue-600 dark:text-blue-400">,</span> <span className="text-orange-600 dark:text-orange-400">"MongoDB"</span><span className="text-blue-600 dark:text-blue-400">,</span> <span className="text-orange-600 dark:text-orange-400">"REST APIs"</span>
+                <br />    <span className="text-orange-600 dark:text-orange-400">"Node.js"</span><span className="text-blue-600 dark:text-blue-400">,</span> <span className="text-orange-600 dark:text-orange-400">"Express"</span><span className="text-blue-600 dark:text-blue-400">,</span> <span className="text-orange-600 dark:text-orange-400">"MongoDB"</span><span className="text-blue-600 dark:text-blue-400">,</span> <span className="text-orange-600 dark:text-orange-400">"REST APIs"</span><span className="text-blue-600 dark:text-blue-400">,</span>
+                <br />    <span className="text-orange-600 dark:text-orange-400">"PostgreSQL"</span><span className="text-blue-600 dark:text-blue-400">,</span> <span className="text-orange-600 dark:text-orange-400">"MySQL"</span><span className="text-blue-600 dark:text-blue-400">,</span> <span className="text-orange-600 dark:text-orange-400">"WebSockets"</span><span className="text-blue-600 dark:text-blue-400">,</span> <span className="text-orange-600 dark:text-orange-400">"Socket.io"</span><span className="text-blue-600 dark:text-blue-400">,</span> <span className="text-orange-600 dark:text-orange-400">"GitHub"</span>
                 <br />  <span className="text-green-600 dark:text-green-400">{`]`}</span><span className="text-blue-600 dark:text-blue-400">,</span>
                 <br />  <span className="text-purple-600 dark:text-purple-400">openToWork</span><span className="text-blue-600 dark:text-blue-400">:</span> <span className="text-blue-600 dark:text-blue-400">true</span><span className="text-blue-600 dark:text-blue-400">,</span>
                 <br />  <span className="text-purple-600 dark:text-purple-400">hireable</span><span className="text-blue-600 dark:text-blue-400">:</span> <span className="text-green-600 dark:text-green-400">function</span><span className="text-green-600 dark:text-green-400">()</span> <span className="text-green-600 dark:text-green-400">{`{`}</span>
                 <br />    <span className="text-blue-600 dark:text-blue-400">return</span> <span className="text-green-600 dark:text-green-400">(</span>
                 <br />      <span className="text-purple-600 dark:text-purple-400">this</span><span className="text-orange-600 dark:text-orange-400">.skills.includes</span><span className="text-green-600 dark:text-green-400">(</span><span className="text-orange-600 dark:text-orange-400">"React"</span><span className="text-green-600 dark:text-green-400">)</span> <span className="text-orange-600 dark:text-orange-400">&&</span>
                 <br />      <span className="text-purple-600 dark:text-purple-400">this</span><span className="text-orange-600 dark:text-orange-400">.skills.includes</span><span className="text-green-600 dark:text-green-400">(</span><span className="text-orange-600 dark:text-orange-400">"TypeScript"</span><span className="text-green-600 dark:text-green-400">)</span> <span className="text-orange-600 dark:text-orange-400">&&</span>
-                <br />      <span className="text-purple-600 dark:text-purple-400">this</span><span className="text-orange-600 dark:text-orange-400">.skills.length <span className="text-blue-600 dark:text-blue-400">{'>='}</span> 5</span>
+                <br />      <span className="text-purple-600 dark:text-purple-400">this</span><span className="text-orange-600 dark:text-orange-400">.skills.length <span className="text-blue-600 dark:text-blue-400">{'>='}</span> +10</span>
                 <br />    <span className="text-green-600 dark:text-green-400">)</span><span className="text-blue-600 dark:text-blue-400">;</span>
                 <br />  <span className="text-green-600 dark:text-green-400">{`}`}</span>
                 <br /><span className="text-green-600 dark:text-green-400">{`}`}</span><span className="text-blue-600 dark:text-blue-400">;</span>
