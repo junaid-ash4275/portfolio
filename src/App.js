@@ -9,8 +9,9 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Skills from './components/Skills';
 import Academic from './components/Academic';
-// import TechnicalExpertise from './components/TechnicalExpertise';
 import Footer from './components/Footer';
+
+//next thing to fix is the reponsiveness of the whole app. 
 
 function App() {
   const [darkMode, setDarkMode] = useState(false); // Default to dark mode
