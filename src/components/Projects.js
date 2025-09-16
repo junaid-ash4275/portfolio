@@ -27,12 +27,12 @@ const Projects = () => {
     },
     {
       id: 3,
-      title: "SB Bookings - Doctors App",
-      description: "Appointment Manager: A complete app for doctors to manage daily appointments, add or remove staff, and manage patients. Includes integrated payment gateway with Stripe. Implements Role-Based Access Control (RBAC) for seamless user management.",
-      image: "/assets/project3.png",
-      technologies: ["React", "Node.js", "PostgreSQL", "Express", "Tailwind CSS", "Stripe", "Argon Dashboard UI", "Material UI"],
+      title: "Portfolio",
+      description: "A modern portfolio website to showcase my projects, skills, and experience. Built with React, Node.js, and Tailwind CSS. Features responsive design and interactive UI.",
+      image: "/assets/portfolio.png",
+      technologies: ["React", "Node.js", "Tailwind CSS", "Shadcn UI"],
       category: "FullStack",
-      github: "https://github.com/junaid-ash4275/sbbooking-v2"
+      link: "#home", // When this icon is clicked, just scroll to the top of app (same tab)
     },
     {
       id: 4,
@@ -158,11 +158,11 @@ const Projects = () => {
                     }}>
 
                     {/* Project Image */}
-                    <div className="relative h-96 w-full mb-6 overflow-hidden rounded-lg">
+                    <div className="relative h-96 w-full mb-6 overflow-hidden rounded-lg bg-slate-100 dark:bg-slate-900 flex items-center justify-center">
                       <img 
                         src={project.image} 
                         alt={project.title}
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        className="max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-105"
                         onError={(e) => {
                           e.target.style.display = 'none';
                           e.target.nextSibling.style.display = 'flex';
