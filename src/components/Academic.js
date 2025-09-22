@@ -20,9 +20,9 @@ const Academic = () => {
         </div>
 
         {/* Content Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           {/* Education Section */}
-          <div>
+          <div className="mb-8 md:mb-0">
             <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-3">Education</h3>
             <p className="text-gray-600 dark:text-gray-400 mb-6">
               Formal academic degrees showcasing foundational knowledge.

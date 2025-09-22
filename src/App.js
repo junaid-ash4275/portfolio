@@ -44,9 +44,9 @@ function App() {
   }
 
   return (
-    <div className={darkMode ? 'dark' : ''} style={{ backgroundColor: darkMode ? '#0f172a' : '#ffffff' }}>
+    <div className={`${darkMode ? 'dark' : ''} w-full overflow-x-hidden`} style={{ backgroundColor: darkMode ? '#0f172a' : '#ffffff' }}>
       <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-      <div className="bg-white dark:bg-gray-900">
+      <div className="w-full bg-white dark:bg-gray-900 overflow-x-hidden">
         <Home />
         <Skills />
         <Experience />
