@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
-import { FaProjectDiagram, FaBriefcase, FaLaptopCode, FaTools, FaWhatsapp, FaArrowUp } from 'react-icons/fa';
+import { FaProjectDiagram, FaBriefcase, FaLaptopCode, FaTools, FaWhatsapp, FaArrowUp, FaBars, FaTimes } from 'react-icons/fa';
 import { FiGithub, FiLinkedin, FiHome, FiCode, FiBriefcase } from "react-icons/fi";
 import { MdOutlineEmail, MdOutlineLocalPhone } from "react-icons/md";
 import { IoExtensionPuzzleOutline } from "react-icons/io5";
@@ -8,7 +8,8 @@ import { LuGraduationCap, LuContact } from "react-icons/lu";
 const Home = () => {
   const [showScrollButton, setShowScrollButton] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   // Handle scroll to top
   const scrollToTop = () => {
     window.scrollTo({
@@ -93,6 +94,7 @@ const Home = () => {
 
   const handleNavClick = (id) => {
     setActiveSection(id);
+    setIsMobileMenuOpen(false); // Close mobile menu when navigating
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -146,25 +148,25 @@ const Home = () => {
   }, [activeSection, navigationItems]);
 
   return (
-    <section id="home" className="flex flex-col md:flex-row items-center justify-center bg-gradient-to-br from-indigo-50 to-white dark:from-gray-900 dark:to-gray-950 relative overflow-hidden pb-32">
+    <section id="home" className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-indigo-50 to-white dark:from-gray-900 dark:to-gray-950 relative overflow-hidden py-8 sm:py-16 lg:py-20">
 
-      <div className='container relative pb-40 flex flex-col md:flex-row items-center justify-center mt-10 mx-auto px-4 md:px-8 lg:px-12'>
+      <div className='container relative flex flex-col lg:flex-row items-center justify-center mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-24 2xl:px-32 max-w-7xl'>
         {/* Left Content */}
-        <div className="w-full md:w-1/2 animate-slide-up">
-          <div className="welcome-text mb-2 font-semibold text-sm text-indigo-600 dark:text-indigo-400 bg-indigo-100 dark:bg-indigo-900/30 py-3 px-4 rounded-full inline-block transition-all duration-300 hover:scale-80 hover:shadow-lg hover:shadow-indigo-200 dark:hover:shadow-indigo-900/50">
+        <div className="w-full lg:w-1/2 animate-slide-up mb-8 lg:mb-0 lg:pr-8 xl:pr-12">
+          <div className="welcome-text mb-3 sm:mb-4 font-semibold text-xs sm:text-sm text-indigo-600 dark:text-indigo-400 bg-indigo-100 dark:bg-indigo-900/30 py-2 px-3 sm:py-3 sm:px-4 rounded-full inline-block transition-all duration-300 hover:scale-95 hover:shadow-lg hover:shadow-indigo-200 dark:hover:shadow-indigo-900/50">
             Welcome to my portfolio
           </div>
 
-          <h1 className="text-5xl md:text-6xl font-bold mb-4 dark:text-white">
-            Hi, I'm <span className="text-indigo-600 dark:text-white-400">Junaid Ashraf</span>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 dark:text-white leading-tight">
+            Hi, I'm <span className="text-indigo-600 dark:text-indigo-400">Junaid Ashraf</span>
           </h1>
 
-          <h2 className="text-2xl md:text-3xl font-medium mb-6 h-12 md:h-14 flex items-center dark:text-white">
-            I'm a <span className="text-indigo-600 font-bold dark:text-indigo-400 ml-2">{displayText}</span>
+          <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium mb-4 sm:mb-6 h-10 sm:h-12 md:h-14 flex items-center dark:text-white">
+            I'm a <span className="text-indigo-600 font-bold dark:text-indigo-400 ml-1 sm:ml-2">{displayText}</span>
             <span className="ml-1 animate-pulse">|</span>
           </h2>
 
-          <p className="text-gray-700 dark:text-gray-300 mb-8 max-w-lg">
+          <p className="text-sm sm:text-base md:text-lg text-gray-700 dark:text-gray-300 mb-6 sm:mb-8 max-w-lg lg:max-w-xl leading-relaxed">
             Experienced React Frontend Developer specializing in crafting scalable,
             high-performance web applications. Dedicated to creating seamless
             user experiences through innovative solutions, solving complex
@@ -173,11 +175,11 @@ const Home = () => {
           </p>
 
           {/* Buttons and Social Links */}
-          <div className="flex flex-wrap gap-4 items-center">
+          <div className="flex flex-row flex-wrap gap-4 sm:gap-6 items-center">
             <a
               href="/resume.pdf"
               download="Junaid-Ashraf-Resume.pdf"
-              className="bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-3 rounded-md flex items-center gap-2 transition-all"
+              className="bg-indigo-600 hover:bg-indigo-700 text-white py-2.5 px-4 sm:py-3 sm:px-5 rounded-md flex items-center gap-2 transition-all text-sm sm:text-base font-medium hover:scale-105"
             >
               <svg className="w-4 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -185,28 +187,28 @@ const Home = () => {
               Resume
             </a>
 
-            <div className="flex flex-wrap justify-center sm:justify-start gap-1.5 sm:gap-3 md:gap-4 animate-slide-right">
-              <a href="https://wa.me/923151728837" target="_blank" rel="noopener noreferrer" className="group w-10 h-10 bg-gray-100 dark:bg-gray-700 hover:bg-indigo-200 dark:hover:bg-indigo-700 flex items-center justify-center rounded-full transition-all duration-300 ease-in-out">
-                <FaWhatsapp className="w-6 h-6 text-gray-700 dark:text-gray-300 group-hover:text-[#6d28d9] transition-all duration-300 ease-in-out group-hover:rotate-6 group-hover:scale-110" />
+            <div className="flex flex-wrap justify-start gap-2 sm:gap-3 md:gap-4 animate-slide-right">
+              <a href="https://wa.me/923151728837" target="_blank" rel="noopener noreferrer" className="group w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 bg-gray-100 dark:bg-gray-700 hover:bg-indigo-200 dark:hover:bg-indigo-700 flex items-center justify-center rounded-full transition-all duration-300 ease-in-out">
+                <FaWhatsapp className="w-5 h-5 sm:w-6 sm:h-6 text-gray-700 dark:text-gray-300 group-hover:text-[#6d28d9] transition-all duration-300 ease-in-out group-hover:rotate-6 group-hover:scale-110" />
               </a>
-              <a href="https://github.com/junaid-ash4275" target="_blank" rel="noopener noreferrer" className="group w-10 h-10 bg-gray-100 dark:bg-gray-700 hover:bg-indigo-200 dark:hover:bg-indigo-700 flex items-center justify-center rounded-full transition-all duration-300 ease-in-out">
-                <FiGithub className="w-6 h-6 text-gray-700 dark:text-gray-300 group-hover:text-[#6d28d9] transition-all duration-300 ease-in-out group-hover:rotate-6 group-hover:scale-110" />
+              <a href="https://github.com/junaid-ash4275" target="_blank" rel="noopener noreferrer" className="group w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 bg-gray-100 dark:bg-gray-700 hover:bg-indigo-200 dark:hover:bg-indigo-700 flex items-center justify-center rounded-full transition-all duration-300 ease-in-out">
+                <FiGithub className="w-5 h-5 sm:w-6 sm:h-6 text-gray-700 dark:text-gray-300 group-hover:text-[#6d28d9] transition-all duration-300 ease-in-out group-hover:rotate-6 group-hover:scale-110" />
               </a>
-              <a href="https://linkedin.com/in/junaid-ashraf-b927b21a1" target="_blank" rel="noopener noreferrer" className="group w-10 h-10 bg-gray-100 dark:bg-gray-700 hover:bg-indigo-200 dark:hover:bg-indigo-700 flex items-center justify-center rounded-full transition-all duration-300 ease-in-out">
-                <FiLinkedin className="w-6 h-6 text-gray-700 dark:text-gray-300 group-hover:text-[#6d28d9] transition-all duration-300 ease-in-out group-hover:rotate-6 group-hover:scale-110" />
+              <a href="https://linkedin.com/in/junaid-ashraf-b927b21a1" target="_blank" rel="noopener noreferrer" className="group w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 bg-gray-100 dark:bg-gray-700 hover:bg-indigo-200 dark:hover:bg-indigo-700 flex items-center justify-center rounded-full transition-all duration-300 ease-in-out">
+                <FiLinkedin className="w-5 h-5 sm:w-6 sm:h-6 text-gray-700 dark:text-gray-300 group-hover:text-[#6d28d9] transition-all duration-300 ease-in-out group-hover:rotate-6 group-hover:scale-110" />
               </a>
-              <a href="mailto:junaid.ashraf4275@gmail.com" className="group w-10 h-10 bg-gray-100 dark:bg-gray-700 hover:bg-indigo-200 dark:hover:bg-indigo-700 flex items-center justify-center rounded-full transition-all duration-300 ease-in-out">
-                <MdOutlineEmail className="w-6 h-6 text-gray-700 dark:text-gray-300 group-hover:text-[#6d28d9] transition-all duration-300 ease-in-out group-hover:rotate-6 group-hover:scale-110" />
+              <a href="mailto:junaid.ashraf4275@gmail.com" className="group w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 bg-gray-100 dark:bg-gray-700 hover:bg-indigo-200 dark:hover:bg-indigo-700 flex items-center justify-center rounded-full transition-all duration-300 ease-in-out">
+                <MdOutlineEmail className="w-5 h-5 sm:w-6 sm:h-6 text-gray-700 dark:text-gray-300 group-hover:text-[#6d28d9] transition-all duration-300 ease-in-out group-hover:rotate-6 group-hover:scale-110" />
               </a>
-              <a href="tel:+923151728837" className="group w-10 h-10 bg-gray-100 dark:bg-gray-700 hover:bg-indigo-200 dark:hover:bg-indigo-700 flex items-center justify-center rounded-full transition-all duration-300 ease-in-out">
-                <MdOutlineLocalPhone className="w-6 h-6 text-gray-700 dark:text-gray-300 group-hover:text-[#6d28d9] transition-all duration-300 ease-in-out group-hover:rotate-6 group-hover:scale-110" />
+              <a href="tel:+923151728837" className="group w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 bg-gray-100 dark:bg-gray-700 hover:bg-indigo-200 dark:hover:bg-indigo-700 flex items-center justify-center rounded-full transition-all duration-300 ease-in-out">
+                <MdOutlineLocalPhone className="w-5 h-5 sm:w-6 sm:h-6 text-gray-700 dark:text-gray-300 group-hover:text-[#6d28d9] transition-all duration-300 ease-in-out group-hover:rotate-6 group-hover:scale-110" />
               </a>
             </div>
           </div>
         </div>
 
         {/* Right Content - Code Snippet */}
-        <div className="w-full md:w-3/6">
+        <div className="w-full lg:w-1/2 lg:pl-8 xl:pl-12">
           <div className="code-editor-container">
             {/* Code Editor Header */}
             <div className="code-editor-header">
@@ -250,67 +252,163 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Stats Tiles */}
-        <div className="absolute bottom-4 left-0 right-0">
-          <div className="w-full px-4">
-            <div className="grid grid-cols-4 gap-4 w-full max-w-8xl mx-auto">
-              {/* Projects Completed */}
-              <div className="tile-container">
-                <div className="tile-content">
-                  <div className="tile-icon projects">
-                    <FaProjectDiagram className="text-white" size={20} />
-                  </div>
-                  <div className="tile-text">
-                    <span className="tile-number">10+</span>
-                    <span className="tile-label text-gray-600 dark:text-gray-300">Projects Completed</span>
-                  </div>
-                </div>
-              </div>
+      </div>
 
-              {/* Years of Experience */}
-              <div className="tile-container">
-                <div className="tile-content">
-                  <div className="tile-icon experience">
-                    <FaBriefcase className="text-white" size={20} />
-                  </div>
-                  <div className="tile-text">
-                    <span className="tile-number">3+</span>
-                    <span className="tile-label text-gray-600 dark:text-gray-300">Years of Experience</span>
-                  </div>
-                </div>
+      {/* Stats Tiles */}
+      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-16 xl:px-24 2xl:px-32 mt-8 sm:mt-12 lg:mt-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 w-full max-w-8xl mx-auto">
+          {/* Projects Completed */}
+          <div className="tile-container">
+            <div className="tile-content">
+              <div className="tile-icon projects">
+                <FaProjectDiagram className="text-white" size={20} />
               </div>
-
-              {/* Skills & Technologies */}
-              <div className="tile-container">
-                <div className="tile-content">
-                  <div className="tile-icon skills">
-                    <FaLaptopCode className="text-white" size={20} />
-                  </div>
-                  <div className="tile-text">
-                    <span className="tile-number">16+</span>
-                    <span className="tile-label text-gray-600 dark:text-gray-300  ">Skills & Technologies</span>
-                  </div>
-                </div>
+              <div className="tile-text">
+                <span className="tile-number">10+</span>
+                <span className="tile-label text-gray-600 dark:text-gray-300">Projects Completed</span>
               </div>
+            </div>
+          </div>
 
-              {/* Tools Used */}
-              <div className="tile-container">
-                <div className="tile-content">
-                  <div className="tile-icon tools">
-                    <FaTools className="text-white" size={20} />
-                  </div>
-                  <div className="tile-text">
-                    <span className="tile-number">10+</span>
-                    <span className="tile-label text-gray-600 dark:text-gray-300">Tools Used</span>
-                  </div>
-                </div>
+          {/* Years of Experience */}
+          <div className="tile-container">
+            <div className="tile-content">
+              <div className="tile-icon experience">
+                <FaBriefcase className="text-white" size={20} />
+              </div>
+              <div className="tile-text">
+                <span className="tile-number">3+</span>
+                <span className="tile-label text-gray-600 dark:text-gray-300">Years of Experience</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Skills & Technologies */}
+          <div className="tile-container">
+            <div className="tile-content">
+              <div className="tile-icon skills">
+                <FaLaptopCode className="text-white" size={20} />
+              </div>
+              <div className="tile-text">
+                <span className="tile-number">16+</span>
+                <span className="tile-label text-gray-600 dark:text-gray-300  ">Skills & Technologies</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Tools Used */}
+          <div className="tile-container">
+            <div className="tile-content">
+              <div className="tile-icon tools">
+                <FaTools className="text-white" size={20} />
+              </div>
+              <div className="tile-text">
+                <span className="tile-number">10+</span>
+                <span className="tile-label text-gray-600 dark:text-gray-300">Tools Used</span>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Mobile Navigation Menu Button */}
+      <div className="lg:hidden fixed top-4 right-4 z-50">
+        <button
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="flex items-center p-2 text-sm border border-indigo-600
+            shadow-[3px_3px_0px_0px_rgba(67,56,202,0.9)] sm:shadow-[4px_4px_0px_0px_rgba(67,56,202,0.9)]
+            dark:shadow-[3px_3px_0px_0px_rgba(55,65,81,0.9)] dark:sm:shadow-[4px_4px_0px_0px_rgba(55,65,81,0.9)]
+            transition-all duration-300 ease-in-out select-none
+            dark:bg-gray-800 dark:text-white bg-white text-black rounded-full
+            hover:scale-110"
+          aria-label="Toggle navigation menu"
+        >
+          {isMobileMenuOpen ? (
+            <FaTimes className="w-5 h-5" />
+          ) : (
+            <FaBars className="w-5 h-5" />
+          )}
+        </button>
+      </div>
+
+      {/* Mobile Navigation Menu */}
+      <div className={`lg:hidden fixed inset-0 z-40 transition-all duration-500 ease-in-out ${isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`}>
+        {/* Backdrop */}
+        <div
+          className="absolute inset-0 bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-md"
+          onClick={() => setIsMobileMenuOpen(false)}
+        ></div>
+
+        {/* Menu Content */}
+        <div className={`absolute top-20 right-4 w-64 max-w-[calc(100vw-2rem)]
+          bg-white dark:bg-gray-800 
+          border border-indigo-600 dark:border-gray-600
+          shadow-[4px_4px_0px_0px_rgba(67,56,202,0.9)] dark:shadow-[4px_4px_0px_0px_rgba(55,65,81,0.9)]
+          rounded-xl p-4 
+          transition-all duration-500 ease-in-out transform
+          ${isMobileMenuOpen ? 'translate-y-0 scale-100 rotate-0' : 'translate-y-8 scale-95 -rotate-1'
+          }`}>
+
+          {/* Navigation Items */}
+          <div className="flex flex-col space-y-2">
+            {navigationItems.map((item, index) => {
+              const IconComponent = item.icon;
+              const isActive = activeSection === item.id;
+
+              return (
+                <a
+                  key={item.id}
+                  href={item.href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavClick(item.id);
+                  }}
+                  className={`
+                    group flex items-center gap-3 p-3 rounded-lg 
+                    border transition-all duration-300 ease-in-out
+                    transform hover:scale-105 hover:-translate-y-1
+                    ${isActive
+                      ? 'bg-indigo-600 text-white border-indigo-700 shadow-[2px_2px_0px_0px_rgba(67,56,202,0.7)]'
+                      : 'bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-600 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-300 dark:hover:border-indigo-600 hover:shadow-[1px_1px_0px_0px_rgba(67,56,202,0.5)]'
+                    }
+                  `}
+                  style={{
+                    animationDelay: `${index * 100}ms`
+                  }}
+                >
+                  <div className={`
+                    p-1.5 rounded-md transition-all duration-300
+                    ${isActive 
+                      ? 'bg-white/20' 
+                      : 'bg-white dark:bg-gray-600 group-hover:bg-indigo-100 dark:group-hover:bg-indigo-800/50'
+                    }
+                  `}>
+                    <IconComponent className={`
+                      text-base transition-all duration-300
+                      ${isActive 
+                        ? 'text-white' 
+                        : 'text-indigo-600 dark:text-indigo-400 group-hover:scale-110'
+                      }
+                    `} />
+                  </div>
+                  <span className="font-medium text-sm">{item.label}</span>
+                  <div className={`
+                    ml-auto w-1.5 h-1.5 rounded-full transition-all duration-300
+                    ${isActive 
+                      ? 'bg-white' 
+                      : 'bg-transparent group-hover:bg-indigo-500'
+                    }
+                  `}></div>
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
       {/* Integrated Sidebar Navigation */}
-      <div className="fixed right-8 top-1/2 transform -translate-y-1/2 z-50">
+      <div className="hidden lg:block fixed right-4 xl:right-8 top-1/2 transform -translate-y-1/2 z-50">
         <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full shadow-lg border border-gray-100 dark:border-gray-700 py-6 px-3 flex flex-col items-center">
           <div className="relative flex flex-col items-center">
             {/* Removed top spacer since we don't want any line above the first icon */}
@@ -375,20 +473,19 @@ const Home = () => {
       </div>
 
       {/* Scroll to Top Button with smooth transitions */}
-      <div className={`fixed bottom-4 right-4 z-50 transition-all duration-500 ease-in-out transform ${
-        showScrollButton ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
-      }`}>
+      <div className={`fixed bottom-4 right-4 lg:bottom-6 lg:right-6 z-40 transition-all duration-500 ease-in-out transform ${showScrollButton ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
+        }`}>
         <button
           onClick={scrollToTop}
-          className="flex items-center px-2 py-2 text-sm border border-indigo-600
-            shadow-[4px_4px_0px_0px_rgba(67,56,202,0.9)]
-            dark:shadow-[4px_4px_0px_0px_rgba(55,65,81,0.9)]
+          className="flex items-center p-3 sm:p-4 text-sm border border-indigo-600
+            shadow-[3px_3px_0px_0px_rgba(67,56,202,0.9)] sm:shadow-[4px_4px_0px_0px_rgba(67,56,202,0.9)]
+            dark:shadow-[3px_3px_0px_0px_rgba(55,65,81,0.9)] dark:sm:shadow-[4px_4px_0px_0px_rgba(55,65,81,0.9)]
             transition-all duration-300 ease-in-out select-none
-            dark:bg-gray-800 dark:text-white p-3 bg-white text-black rounded-full
+            dark:bg-gray-800 dark:text-white bg-white text-black rounded-full
             hover:scale-110"
           aria-label="Scroll to top"
         >
-          <FaArrowUp className="w-5 h-5" />
+          <FaArrowUp className="w-4 h-4 sm:w-5 sm:h-5" />
         </button>
       </div>
     </section>
