@@ -50,6 +50,7 @@ const Home = () => {
 
   const currentText = jobTitles[currentIndex];
   const timeoutRef = useRef(null);
+//add something here to make a git commit
 
   const navigationItems = useMemo(() => ([
     { id: 'home', icon: FiHome, label: 'Home', href: '#home' },
