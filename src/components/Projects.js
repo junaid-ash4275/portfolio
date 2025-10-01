@@ -18,12 +18,12 @@ const Projects = () => {
     },
     {
       id: 2,
-      title: "Job Portal",
-      description: "Job portal for job seekers and employers with advanced search and filtering options",
-      image: "/assets/job-portal.png",
-      technologies: ["React", "Node.js", "MongoDB", "Express", "Tailwind CSS,", "Aceternity UI"],
-      category: "FullStack",
-      github: "https://github.com/junaid-ash4275/job-portal"
+      title: "MergeMate PDF",
+      description: "A PDF editor and merger web application that allows users to merge multiple PDF files into a single file alongside many other PDF tools.",
+      image: "/assets/mergematepdf.png",
+      technologies: ["React", "Bootstrap", "Tailwind CSS,", "Aceternity UI"],
+      category: "Frontend",
+      link: "https://mergematepdf.netlify.app/",
     },
     {
       id: 3,
@@ -94,7 +94,7 @@ const Projects = () => {
           </p>
         </div>
 
-        
+
         {/* Project Category */}
         <div className="dark:bg-gray-800 py-4 px-6 flex items-center space-x-4 rounded-lg max-w-8xl mx-auto">
           <div className="w-1 h-16 bg-blue-500 rounded"></div>
@@ -159,8 +159,8 @@ const Projects = () => {
 
                     {/* Project Image */}
                     <div className="relative h-96 w-full mb-6 overflow-hidden rounded-lg bg-slate-100 dark:bg-slate-900 flex items-center justify-center">
-                      <img 
-                        src={project.image} 
+                      <img
+                        src={project.image}
                         alt={project.title}
                         className="max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-105"
                         onError={(e) => {
@@ -168,7 +168,7 @@ const Projects = () => {
                           e.target.nextSibling.style.display = 'flex';
                         }}
                       />
-                      <div 
+                      <div
                         className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center"
                         style={{ display: 'none' }}
                       >
