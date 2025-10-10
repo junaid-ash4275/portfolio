@@ -43,6 +43,10 @@ function App() {
     return <Loader />;
   }
 
+// Today's date: 2023-03-22
+// this is jsut to add git commit
+
+
   return (
     <div className={`${darkMode ? 'dark' : ''} w-full overflow-x-hidden`} style={{ backgroundColor: darkMode ? '#0f172a' : '#ffffff' }}>
       <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
