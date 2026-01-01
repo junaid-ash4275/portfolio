@@ -3,6 +3,7 @@ import { LuSendHorizontal } from "react-icons/lu";
 import { RiCheckDoubleFill } from "react-icons/ri";
 
 const countries = [
+  { code: '+92', flag: '🇵🇰', name: 'Pakistan' },
   { code: '+93', flag: '🇦🇫', name: 'Afghanistan' },
   { code: '+355', flag: '🇦🇱', name: 'Albania' },
   { code: '+213', flag: '🇩🇿', name: 'Algeria' },
@@ -132,7 +133,6 @@ const countries = [
   { code: '+234', flag: '🇳🇬', name: 'Nigeria' },
   { code: '+47', flag: '🇳🇴', name: 'Norway' },
   { code: '+968', flag: '🇴🇲', name: 'Oman' },
-  { code: '+92', flag: '🇵🇰', name: 'Pakistan' },
   { code: '+680', flag: '🇵🇼', name: 'Palau' },
   { code: '+507', flag: '🇵🇦', name: 'Panama' },
   { code: '+675', flag: '🇵🇬', name: 'Papua New Guinea' },
@@ -242,7 +242,6 @@ const Contact = () => {
   };
 
   const handleSubmit = async (e) => {
-    debugger;
     e.preventDefault();
     setIsSubmitting(true);
 

@@ -7,16 +7,16 @@ const Experience = () => {
       title: "React Developer",
       company: "XPRT Computing",
       location: "Lahore, Pakistan",
-      dateRange: "Aug 2023 - Present",
+      dateRange: "Feb 2023 - Nov 2025",
       isRemote: false,
       description: "Building innovative solutions and delivering value across diverse roles and industries"
     },
     {
       id: 2,
-      title: ".NET Developer",
-      company: "XPRT Computing",
+      title: "Full Stack Developer",
+      company: "Yamsol Solutions",
       location: "Lahore, Pakistan",
-      dateRange: "Feb 2024 - Present",
+      dateRange: "Nov 2025 - Present",
       isRemote: false,
       description: "Developed modern web applications with focus on performance and user experience"
     },

@@ -1,6 +1,17 @@
 import React from 'react';
 import { FiCode, FiServer, FiTool, FiFigma } from "react-icons/fi";
-import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaBootstrap, FaNodeJs, FaGitAlt, FaGithub, FaChrome } from "react-icons/fa";
+import {
+  FaHtml5,
+  FaCss3Alt,
+  FaJs,
+  FaReact,
+  FaBootstrap,
+  FaNodeJs,
+  FaGitAlt,
+  FaGithub,
+  FaChrome,
+  FaAngular,
+} from "react-icons/fa";
 import { RiNextjsFill, RiTailwindCssFill, RiFirebaseFill } from "react-icons/ri";
 import { SiTypescript, SiReactbootstrap, SiRedux, SiExpress, SiMongodb, SiJsonwebtokens, SiSocketdotio, SiPostman, SiNetlify, SiVercel } from "react-icons/si";
 import { TbBrandFramerMotion } from "react-icons/tb";
@@ -24,6 +35,7 @@ const Skills = () => {
     { name: 'TypeScript', icon: <SiTypescript className="text-blue-600" /> },
     { name: 'React.js', icon: <FaReact className="text-blue-500" /> },
     { name: 'Next.js', icon: <RiNextjsFill className="text-black dark:text-white" /> },
+    { name: 'Angular', icon: <FaAngular className="text-red-500" /> },
     { name: 'Tailwind CSS', icon: <RiTailwindCssFill className="text-cyan-500" /> },
     { name: 'Bootstrap', icon: <FaBootstrap className="text-purple-600" /> },
     { name: 'Material UI', icon: <img src={mui} width={20} height={20} alt="mui" className="text-blue-500" /> },
